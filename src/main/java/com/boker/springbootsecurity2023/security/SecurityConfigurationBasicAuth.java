@@ -35,6 +35,7 @@ public class SecurityConfigurationBasicAuth {
         return new InMemoryUserDetailsManager(user1, user2);
     }
 
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
