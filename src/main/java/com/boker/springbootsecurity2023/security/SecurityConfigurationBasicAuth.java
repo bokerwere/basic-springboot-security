@@ -11,11 +11,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
 @Configuration
 public class SecurityConfigurationBasicAuth {
 
     @Bean
-    public PasswordEncoder encoder(){
+    public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -43,6 +44,7 @@ public class SecurityConfigurationBasicAuth {
                         .antMatchers("/navigation/**").hasRole("CAPTAIN")
                         .antMatchers("/cantina/**").hasRole("CREW")
                         .anyRequest().authenticated()
+
                 )
                 .httpBasic(Customizer.withDefaults());
         return http.build();
